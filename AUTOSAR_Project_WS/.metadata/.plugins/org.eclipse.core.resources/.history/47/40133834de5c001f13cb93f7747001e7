@@ -1,0 +1,40 @@
+/*
+ ============================================================================
+ Name        : Gpt_Irq.c
+ Module Name : Gpt
+ Author      : Ahmed Ali
+ Date        : 15 Aug. 2024
+ Description : Source file for TM4C123GH6PM Microcontroller Handler - Gpt Driver
+ ============================================================================
+ */
+
+#include "Gpt_Private.h"
+
+extern volatile void (*Gpt_callBackPtrArr[GPT_CONFIGURED_CHANNLES])(void);
+
+/*********************************************************************
+ * Service Name: SysTick_Handler
+ * Sync/Async: Asynchronous
+ * Reentrancy: non-reentrant
+ * Parameters (in): None
+ * Parameters (inout): None
+ * Parameters (out): None
+ * Return value: None
+ * Description: Handler for SysTick interrupt, used to call the callback function.
+ **********************************************************************/
+void SysTick_Handler(void)
+{
+    if (Gpt_callBackPtrArr[GPT_SYSTICK_ID ] != NULL_PTR)
+    {
+        /* increment counter each 1 MilliSecond */
+        g_CountedTimeInMilliSeconds++;
+        /* check if the counter reach the target or not */
+        if (g_CountedTimeInMilliSeconds >= g_TargetTimeInMilliSeconds)
+        {
+            /* call the Call Back function in the application after the counter = 0 */
+            (Gpt_callBackPtrArr[GPT_SYSTICK_ID ])();
+            g_CountedTimeInMilliSeconds = 0;
+        }
+
+    }
+}

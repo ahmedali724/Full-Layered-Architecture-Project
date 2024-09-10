@@ -1,0 +1,81 @@
+/*
+ ============================================================================
+ Name        : Gpt_PBcfg.h
+ Module Name : Gpt
+ Author      : Ahmed Ali
+ Date        : 15 Aug. 2024
+ Description : Post Build Configuration Header file for TM4C123GH6PM Microcontroller - Gpt Driver
+ ============================================================================
+ */
+
+#ifndef GPT_PBCFG_H_
+#define GPT_PBCFG_H_
+
+/*
+ * Module Version 1.0.0
+ */
+#define GPT_PBCFG_SW_MAJOR_VERSION                 (1U)
+#define GPT_PBCFG_SW_MINOR_VERSION                 (0U)
+#define GPT_PBCFG_SW_PATCH_VERSION                 (0U)
+
+/*
+ * AUTOSAR Version 4.0.3
+ */
+#define GPT_PBCFG_AR_RELEASE_MAJOR_VERSION         (4U)
+#define GPT_PBCFG_AR_RELEASE_MINOR_VERSION         (0U)
+#define GPT_PBCFG_AR_RELEASE_PATCH_VERSION         (3U)
+
+/*******************************************************************************
+ *                              Module Data Types                              *
+ *******************************************************************************/
+
+/* Specifies the behavior of the timer channel after the target time is reached. */
+typedef enum
+{
+    /* After reaching the  target time, the timer continues running with the value "zero" again. */
+    GPT_CH_MODE_CONTINUOUS,
+    /* After reaching the target time, the timer stops automatically (timer expired). */
+    GPT_CH_MODE_ONESHOT
+} Gpt_ChannelModeType;
+
+typedef enum
+{
+    /* Another addition if available, in the case of SysTick the system clock will be added. */
+    GPT_SYSTEM_CLOCK
+} Gpt_ChannelClkSrcRefType;
+
+/* Type definition for structure which hold the initialization parameter for Gpt module */
+typedef struct
+{
+    /* Member contains the numeric ID of a Gpt channel */
+    Gpt_ChannelType Channel_ID;
+
+    /* Member contains the number of ticks or value */
+    Gpt_ValueType Channel_Value;
+
+    /* Member contains the specifies the behavior of the timer channel after the target time is reached */
+    Gpt_ChannelModeType Channel_Mode;
+
+    /* Member contains the selection of different power modes */
+    Gpt_ModeType Gpt_Mode;
+
+    /* Member contains the selection of different clock reference */
+    Gpt_ChannelClkSrcRefType Gpt_ClkRef;
+
+    /* Member contains the pointer to function used in call back */
+    void (*Gpt_CallBackPtr)(void);
+} Gpt_ConfigChannelType;
+
+/* Data structure containing the initialization data for Gpt module. */
+typedef struct
+{
+    Gpt_ConfigChannelType Channels[GPT_CONFIGURED_CHANNLES];
+} Gpt_ConfigType;
+
+/*******************************************************************************
+ *                       External Variables                                    *
+ *******************************************************************************/
+
+extern const Gpt_ConfigType Gpt_ConfigPtr;
+
+#endif /* GPT_PBCFG_H_ */

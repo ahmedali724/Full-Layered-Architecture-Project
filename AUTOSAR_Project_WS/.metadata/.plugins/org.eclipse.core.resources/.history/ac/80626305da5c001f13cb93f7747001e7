@@ -1,0 +1,47 @@
+/*
+ ============================================================================
+ Name        : Port_Types.h
+ Module Name : Port
+ Author      : Ahmed Ali
+ Date        : 17 Aug. 2024
+ Description : Types Header file for TM4C123GH6PM Microcontroller - Port Driver
+ ============================================================================
+ */
+
+#ifndef PORT_TYPES_H_
+#define PORT_TYPES_H_
+
+/*
+ * Module Version 1.0.0
+ */
+#define PORT_TYPES_SW_MAJOR_VERSION           (1U)
+#define PORT_TYPES_SW_MINOR_VERSION           (0U)
+#define PORT_TYPES_SW_PATCH_VERSION           (0U)
+
+/*
+ * AUTOSAR Version 4.0.3
+ */
+#define PORT_TYPES_AR_RELEASE_MAJOR_VERSION   (4U)
+#define PORT_TYPES_AR_RELEASE_MINOR_VERSION   (0U)
+#define PORT_TYPES_AR_RELEASE_PATCH_VERSION   (3U)
+
+/*******************************************************************************
+ *                              Module Data Types                              *
+ *******************************************************************************/
+
+/* Type definition for Port_PinType used by the Port APIs */
+typedef uint8 Port_PinType;
+
+/* Type definition for Port_Type used by the Port APIs */
+typedef uint8 Port_Type;
+
+/* Type definition for Port_PinDirectionType used by the Port APIs */
+typedef enum
+{
+    PORT_PIN_IN, PORT_PIN_OUT
+} Port_PinDirectionType;
+
+/* Type definition for Port_PinModeType used by the Port APIs */
+typedef uint8 Port_PinMode;
+
+#endif /* PORT_TYPES_H_ */

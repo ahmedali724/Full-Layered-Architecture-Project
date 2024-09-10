@@ -1,0 +1,48 @@
+/*
+ ============================================================================
+ Name        : Gpt_Types.h
+ Module Name : Gpt
+ Author      : Ahmed Ali
+ Date        : 17 Aug. 2024
+ Description :
+ ============================================================================
+ */
+
+#ifndef GPT_TYPES_H_
+#define GPT_TYPES_H_
+
+/*
+ * Module Version 1.0.0
+ */
+#define PORT_TYPES_SW_MAJOR_VERSION           (1U)
+#define PORT_TYPES_SW_MINOR_VERSION           (0U)
+#define PORT_TYPES_SW_PATCH_VERSION           (0U)
+
+/*
+ * AUTOSAR Version 4.0.3
+ */
+#define PORT_TYPES_AR_RELEASE_MAJOR_VERSION   (4U)
+#define PORT_TYPES_AR_RELEASE_MINOR_VERSION   (0U)
+#define PORT_TYPES_AR_RELEASE_PATCH_VERSION   (3U)
+
+/*******************************************************************************
+ *                              Module Data Types                              *
+ *******************************************************************************/
+
+/* Type definition for Gpt_ChannelType (Numeric ID of a GPT channel) used by the Gpt APIs */
+typedef uint8 Gpt_ChannelType;
+
+/* Type definition for Gpt_ValueType (number of ticks or value) used by the Gpt APIs */
+typedef uint64 Gpt_ValueType;
+
+/* Type definition for Gpt_ModeType (selection of different power modes) used by the Gpt APIs */
+typedef enum
+{
+    /* Normal operation mode of the GPT */
+    GPT_MODE_NORMAL,
+    /* Operation for reduced power operation mode.
+     * In sleep mode only wakeup capable channels are available. */
+    GPT_MODE_SLEEP
+} Gpt_ModeType;
+
+#endif /* GPT_TYPES_H_ */

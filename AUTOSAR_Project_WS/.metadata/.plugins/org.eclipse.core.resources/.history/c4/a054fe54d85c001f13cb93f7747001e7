@@ -1,0 +1,18 @@
+/*
+ ============================================================================ 
+ Name        : Dio_Types.h
+ Module Name : DIO
+ Author      : Ahmed Ali
+ Date        : 7 Aug. 2024
+ Description : Types Header file for TM4C123GH6PM Microcontroller - Dio Driver
+ ============================================================================
+ */
+
+#ifndef DIO_TYPES_H_
+#define DIO_TYPES_H_
+
+
+
+
+
+#endif /* DIO_TYPES_H_ */
